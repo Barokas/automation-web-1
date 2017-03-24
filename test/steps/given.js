@@ -1,0 +1,146 @@
+import openWebsite from '../support/action/openWebsite';
+import openSection from '../support/action/openSection';
+import isVisible from '../support/check/isVisible';
+import isEnabled from '../support/check/isEnabled';
+import checkSelected from '../support/check/checkSelected';
+import checkElementExists from '../support/check/checkElementExists';
+import checkTitle from '../support/check/checkTitle';
+import compareText from '../support/check/compareText';
+import checkContent from '../support/check/checkContent';
+import checkUrl from '../support/check/checkURL';
+import checkProperty from '../support/check/checkProperty';
+import checkCookieContent from '../support/check/checkCookieContent';
+import checkCookieExists from '../support/check/checkCookieExists';
+import checkDimension from '../support/check/checkDimension';
+import checkOffset from '../support/check/checkOffset';
+import resizeScreenSize from '../support/action/resizeScreenSize';
+import closeAllButFirstTab from '../support/action/closeAllButFirstTab';
+import checkModal from '../support/check/checkModal';
+import openEyes from '../support/action/openEyes';
+import searchSpreadsheet from '../support/action/searchSpreadsheet';
+import markStatusInSheet from '../support/action/markStatusInSheet';
+
+var frameworkSettings	= require('../support/settings/framework.js');
+
+module.exports = function given() {
+    this.Given(
+        /^([^ ]*) open the (url|site) "([^"]*)?"$/,
+        openWebsite
+    );
+	
+    this.Given(
+        /^([^ ]*) go(?:es)? to (url|site|rails) "([^"]*)?"$/,
+        openWebsite
+    );
+	
+    this.Given(
+        /^([^ ]*) go(?:es)? to (Airtasker) ([^"]*)?$/,
+        openSection
+    );
+	
+    this.Given(
+        /^the element "([^"]*)?" is( not)* visible$/, { retry: frameworkSettings.retryCountMin }, 
+        isVisible
+    );
+
+    this.Given(
+        /^the element "([^"]*)?" is( not)* enabled$/, { retry: frameworkSettings.retryCountMin }, 
+        isEnabled
+    );
+
+    this.Given(
+        /^the element "([^"]*)?" is( not)* selected$/, { retry: frameworkSettings.retryCountMin }, 
+        checkSelected
+    );
+
+    this.Given(
+        /^the checkbox "([^"]*)?" is( not)* checked$/, { retry: frameworkSettings.retryCountMin }, 
+        checkSelected
+    );
+
+    this.Given(
+        /^there is (an|no) element "([^"]*)?" on the page$/, { retry: frameworkSettings.retryCountMin }, 
+        checkElementExists
+    );
+
+    this.Given(
+        /^the title is( not)* "([^"]*)?"$/, { retry: frameworkSettings.retryCountMin }, 
+        checkTitle
+    );
+
+    this.Given(
+        /^the element "([^"]*)?" contains( not)* the same text as element "([^"]*)?"$/,
+        compareText
+    );
+
+    this.Given(
+        /^the (element|inputfield) "([^"]*)?" does( not)* contain the text "([^"]*)?"$/,
+        checkContent
+    );
+
+    this.Given(
+        /^the (element|inputfield) "([^"]*)?" does( not)* contain any text$/,
+        checkContent
+    );
+
+    this.Given(
+        /^the page url is( not)* "([^"]*)?"$/,
+        checkUrl
+    );
+
+    this.Given(
+        /^the( css)* attribute "([^"]*)?" from element "([^"]*)?" is( not)* "([^"]*)?"$/, { retry: frameworkSettings.retryCountMin }, 
+        checkProperty
+    );
+
+    this.Given(
+        /^the cookie "([^"]*)?" contains( not)* the value "([^"]*)?"$/, { retry: frameworkSettings.retryCountMin }, 
+        checkCookieContent
+    );
+
+    this.Given(
+        /^the cookie "([^"]*)?" does( not)* exist$/, { retry: frameworkSettings.retryCountMin }, 
+        checkCookieExists
+    );
+
+    this.Given(
+        /^the element "([^"]*)?" is( not)* ([\d]+)px (broad|tall)$/,
+        checkDimension
+    );
+
+    this.Given(
+        /^the element "([^"]*)?" is( not)* positioned at ([\d]+)px on the (x|y) axis$/,
+        checkOffset
+    );
+
+    this.Given(
+        /^I have a screen that is ([\d]+) by ([\d]+) pixels$/,
+        resizeScreenSize
+    );
+
+    this.Given(
+        /^I have closed all but the first (window|tab)$/,
+        closeAllButFirstTab
+    );
+
+    this.Given(
+        /^a (alertbox|confirmbox|prompt) is( not)* opened$/,
+        checkModal
+    );
+	
+    this.Then(
+        /^([^"]*)? open(?:s)? Eyes for "([^"]*)?"$/,
+        openEyes
+    );
+	
+    this.Then(
+        /^([^"]*)? finds an eligible user from spreadsheet from rows ([\d]+) to ([\d]+)$/,
+        searchSpreadsheet
+    );
+	
+    this.Then(
+        /^([^"]*)? marks the row to "([^"]*)?"$/,
+        markStatusInSheet
+    );
+	
+};

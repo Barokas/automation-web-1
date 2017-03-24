@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 6.9.5
+  environment:
+    CI_TEST_REPORTS_DIR: $CIRCLE_TEST_REPORTS
+
+test:
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
+    - platform=browserstack npm run full-feature || platform=browserstack npm run full-feature:
+        parallel: false

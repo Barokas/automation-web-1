@@ -1,0 +1,81 @@
+{
+  "name": "cucumber-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate project to run WebdriverIO tests with Cucumber",
+  "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
+  "main": "test/runner.js",
+  "scripts": {
+    "local-webserver": "http-server ./demo-app",
+    "t1": "./wdio --spec test/demo.features/select.feature",
+    "worker-sign-up": "./wdio --spec test/features/worker_sign_up.feature wdio.stage.conf.js",
+    "post-task": "./wdio --spec test/features/post_task_as_guest.feature wdio.stage.conf.js",
+    "post-task-dev": "./wdio --spec test/features/post_task_as_poster.feature wdio.poster.dev.conf.js",
+    "full-feature": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio.multiremote.stage.conf.js",
+    "full-feature-prod": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio.multiremote.prod.conf.js",
+    "full-feature-local": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio.multiremote.local.conf.js",
+    "recurring-local": "./wdio --spec test/features/post_task_recurring.feature wdio.poster.local.conf.js",
+    "recurring-stage": "./wdio --spec test/features/post_task_recurring.feature wdio.multiremote.stage.conf",
+    "t4": "./wdio --spec test/features/post_task_as_poster.feature wdio.poster.stage.conf.js",
+    "t5": "./wdio --spec test/features/change_location_as_poster.feature wdio.poster.stage.conf.js",
+    "change-avatar": "./wdio --spec test/features/change_avatar_as_poster.feature wdio.poster.stage.conf.js",
+    "eyes-demo": "./wdio --spec test/features/eyes_demo.feature wdio-eyes.stage.conf.js",
+	"eyes-regression": "./wdio --spec test/features/eyes_regression.feature wdio-eyes.stage.conf.js",
+	"eyes-multi": "./wdio --spec test/features/eyes_regression_multi.feature wdio-eyes.multi.stage.conf.js",
+    "rails-delete-user": "./wdio --spec test/features/rails/delete_users.feature wdio.admin.stage.conf.js",
+    "rails-delete-user-prod": "./wdio --spec test/features/rails/delete_users_prod.feature wdio.admin.prod.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webdriverio/cucumber-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webdriverio/cucumber-boilerplate/issues"
+  },
+  "keywords": [
+    "webdriverio",
+    "cucumber",
+    "test",
+    "selenium"
+  ],
+  "author": "Christian Bromann <christian@saucelabs.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.4",
+    "babel-preset-es2015": "~6.14.0",
+    "babel-register": "~6.14.0",
+    "chai": "~3.5.0",
+    "cucumber": "1.3.1",
+    "json-query": "^2.2.0",
+    "logs-to-sumologic": "^1.0.2",
+    "newrelic-winston": "0.0.1",
+    "restler": "^3.4.0",
+    "sentence-generator": "^1.0.1",
+    "sync-request": "^3.0.1",
+    "wdio-cucumber-framework": "^0.2.13",
+    "wdio-phantomjs-service": "~0.1.0",
+    "wdio-selenium-standalone-service": "~0.0.6",
+    "wdio-spec-reporter": "~0.0.3",
+    "webdriverio": "^4.5.0"
+  },
+  "devDependencies": {
+    "allure-commandline": "^1.4.23",
+    "chance": "^1.0.4",
+    "deepmerge": "^1.2.0",
+    "eslint": "~3.4.0",
+    "eslint-config-airbnb-base": "~5.0.3",
+    "eyes.selenium": "0.0.53",
+    "faker": "^3.1.0",
+    "google-spreadsheet": "^2.0.3",
+    "http-server": "~0.9.0",
+    "httpreq": "^0.4.22",
+    "selenium-standalone": "~5.6.2",
+    "selenium-webdriver": "^3.0.0-beta-3",
+    "wdio-allure-reporter": "~0.0.2",
+    "wdio-junit-reporter": "^0.1.0",
+    "wdio-mocha-framework": "^0.5.2",
+    "wdio-sauce-service": "^0.2.5",
+    "wdio-screenshot": "^0.3.0",
+    "winston": "^2.2.0",
+    "winston-annotate": "^0.1.0"
+  }
+}
