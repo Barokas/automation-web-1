@@ -184,8 +184,15 @@ exports.config = {
         var eyes;
 
         var opt = browser.options;
+<<<<<<< Updated upstream
         // var serverUrl = opt.protocol + '://' + opt.hostname + ':' + opt.port + '/wd/hub';
 		var serverUrl='https://' + 'kanakkalburgi1' + ':' + 'PZeWzNPghiDnVqvF8eYz' + '@hub-cloud.browserstack.com/wd/hub'
+=======
+        var serverUrl = opt.protocol + '://' + opt.hostname + ':' + opt.port + '/wd/hub';
+        if ( process.env.platform === 'browserstack' ) {
+            serverUrl='https://' + 'kanakkalburgi1' + ':' + 'PZeWzNPghiDnVqvF8eYz' + '@hub-cloud.browserstack.com/wd/hub'
+        }        
+>>>>>>> Stashed changes
 
         var ALL_SESSIONS	  = JSON.stringify(browser.session())
         var POSTER_SESSION_ID = JSON.stringify(browser.session().Poster.sessionId)
@@ -209,9 +216,15 @@ exports.config = {
 
 
         Poster_browser.addCommand("EyesOpen", function (testName,appName) {
+<<<<<<< Updated upstream
     		if (appName == null){
     			appName="Poster"  // This will be the Default appName;
     		}
+=======
+            if (appName == null){
+                appName="Poster"  // This will be the Default appName;
+            }
+>>>>>>> Stashed changes
             console.log("** Opening Poster eyes **");
             Poster_eyes=OpenEyes(Poster_eyes, Poster_driver, testName, appName, 800, 600);
 
@@ -228,9 +241,15 @@ exports.config = {
         });
 
         Worker_broswer.addCommand("EyesOpen", function (testName,appName) {
+<<<<<<< Updated upstream
  	   		if (appName == null){
     			appName="Worker"  // This will be the Default appName;
     		}
+=======
+            if (appName == null){
+                appName="Worker"  // This will be the Default appName;
+            }
+>>>>>>> Stashed changes
             console.log("** Opening Worker eyes **");
             Worker_eyes=OpenEyes(Worker_eyes, Worker_driver, testName, appName, 800, 600);
         });
