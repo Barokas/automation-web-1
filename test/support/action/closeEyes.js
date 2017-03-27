@@ -15,9 +15,6 @@ module.exports = (
 	// browser.select(person).EyesOpen(page)
 	// global.eyesIsOpen = true
 	
-<<<<<<< Updated upstream
 	// done()
-=======
-	//done()
->>>>>>> Stashed changes
+
 };
