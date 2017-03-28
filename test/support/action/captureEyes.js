@@ -10,8 +10,7 @@ module.exports = (
 	
 	// console.log("(captureEyes) Doing the Eyes for: " + person)
 	// console.log("(captureEyes) Doing the Eyes  on: " + page)
-	
     getBrowserFor(person).EyesCheckWindow(page);
-	
+  	
 	done()
 };

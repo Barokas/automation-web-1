@@ -184,8 +184,11 @@ exports.config = {
         var eyes;
 
         var opt = browser.options;
+
         var serverUrl = opt.protocol + '://' + opt.hostname + ':' + opt.port + '/wd/hub';
-		// var serverUrl='https://' + 'kanakkalburgi1' + ':' + 'PZeWzNPghiDnVqvF8eYz' + '@hub-cloud.browserstack.com/wd/hub'
+        if ( process.env.platform === 'browserstack' ) {
+            serverUrl='https://' + 'kanakkalburgi1' + ':' + 'PZeWzNPghiDnVqvF8eYz' + '@hub-cloud.browserstack.com/wd/hub'
+        }        
 
         var ALL_SESSIONS	  = JSON.stringify(browser.session())
         var POSTER_SESSION_ID = JSON.stringify(browser.session().Poster.sessionId)
@@ -205,13 +208,15 @@ exports.config = {
         ////////////////// Create Instances od Eyes /////////////
 
         Poster_eyes = InitializeEyes();
-        // Worker_eyes = InitializeEyes();
+        Worker_eyes = InitializeEyes();
 
 
         Poster_browser.addCommand("EyesOpen", function (testName,appName) {
-
+    		if (appName == null){
+    			appName="Poster"  // This will be the Default appName;
+    		}
             console.log("** Opening Poster eyes **");
-            Poster_eyes=OpenEyes(Poster_eyes, Poster_driver, testName, appName, 1900, 900);
+            Poster_eyes=OpenEyes(Poster_eyes, Poster_driver, testName, appName, 800, 600);
 
         });
 
@@ -226,8 +231,11 @@ exports.config = {
         });
 
         Worker_broswer.addCommand("EyesOpen", function (testName,appName) {
+ 	   		if (appName == null){
+    			appName="Worker"  // This will be the Default appName;
+    		}
             console.log("** Opening Worker eyes **");
-            Worker_eyes=OpenEyes(Worker_eyes, Worker_driver, testName, appName, 1900, 900);
+            Worker_eyes=OpenEyes(Worker_eyes, Worker_driver, testName, appName, 800, 600);
         });
 
         Worker_broswer.addCommand("EyesCheckWindow", function async(tag) {
@@ -323,7 +331,7 @@ function create_webdriver(server_url, session_id) {
 function InitializeEyes() {
     Eyes = require('eyes.selenium').Eyes;
     eyes = new Eyes();
-    eyes.setApiKey("ZH3tjrLWS1061i3fqivfsRXESn2ltoL6Uk1jTlb9gHCGQ110");
+    eyes.setApiKey("YOUR_API_KEY");
     eyes.setForceFullPageScreenshot(true);
     eyes.setStitchMode(Eyes.StitchMode.CSS);
     return eyes;
@@ -352,5 +360,3 @@ function CloseEyes(eyes,throwEx){
     });
 
 }
-
-

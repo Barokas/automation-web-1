@@ -10,9 +10,11 @@ module.exports = (
 	
 	console.log("(closeEyes) Closing the Eyes for: " + person)
 	
-	getBrowserFor(person).EyesClose(page);
+	// getBrowserFor(person).EyesClose(page);
+	getBrowserFor(person).EyesClose(false);
 	// browser.select(person).EyesOpen(page)
 	// global.eyesIsOpen = true
 	
-	done()
+	// done()
+
 };
