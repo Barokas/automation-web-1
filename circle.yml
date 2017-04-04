@@ -7,5 +7,4 @@ machine:
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
-    - platform=browserstack npm run full-feature || platform=browserstack npm run full-feature:
-        parallel: false
+    - platform=browserstack npm run eyes-multi
