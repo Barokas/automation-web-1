@@ -211,13 +211,18 @@ exports.config = {
         Worker_eyes = InitializeEyes();
 
 
-        Poster_browser.addCommand("EyesOpen", function (testName,appName) {
-    		if (appName == null){
-    			appName="Poster"  // This will be the Default appName;
-    		}
+        Poster_browser.addCommand("EyesOpen", function async (testName,appName,width,height) {
+            if (appName == null){
+                appName="Poster"  // This will be the Default appName;
+            }
+            if (width == null){
+                width=800  // This will be the Default width value;
+            }
+            if (height == null){
+                height=600  // This will be the Default height value;
+            }
             console.log("** Opening Poster eyes **");
-            Poster_eyes=OpenEyes(Poster_eyes, Poster_driver, testName, appName, 800, 600);
-
+            return OpenEyes(Poster_eyes, Poster_driver, testName, appName, width, height);
         });
 
         Poster_browser.addCommand("EyesCheckWindow", function async(tag) {
@@ -230,12 +235,19 @@ exports.config = {
             return CloseEyes(Poster_eyes);
         });
 
-        Worker_broswer.addCommand("EyesOpen", function (testName,appName) {
- 	   		if (appName == null){
-    			appName="Worker"  // This will be the Default appName;
-    		}
+        Worker_broswer.addCommand("EyesOpen", function async (testName,appName,width,height) {
+            if (appName == null){
+                appName="Worker"  // This will be the Default appName;
+            }
+            if (width == null){
+                width=800  // This will be the Default width value;
+            }
+            if (height == null){
+                height=600  // This will be the Default height value;
+            }
+
             console.log("** Opening Worker eyes **");
-            Worker_eyes=OpenEyes(Worker_eyes, Worker_driver, testName, appName, 800, 600);
+            return OpenEyes(Worker_eyes, Worker_driver, testName, appName, width, height);
         });
 
         Worker_broswer.addCommand("EyesCheckWindow", function async(tag) {
@@ -329,6 +341,7 @@ function create_webdriver(server_url, session_id) {
 }
 
 function InitializeEyes() {
+    console.log("InitializeEyes");
     Eyes = require('eyes.selenium').Eyes;
     eyes = new Eyes();
     eyes.setApiKey("YOUR_API_KEY");
@@ -339,10 +352,8 @@ function InitializeEyes() {
 }
 
 function OpenEyes(eyes,driver,testName,appName,width,height) {
-    eyes.open(driver, appName, testName, {width: width, height: height});
-    return eyes;
+    return eyes.open(driver, appName, testName, {width: width, height: height});
 }
-
 
 function CloseEyes(eyes,throwEx){
     return eyes.close(throwEx).then(function (res) {
