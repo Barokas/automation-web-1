@@ -344,7 +344,7 @@ function InitializeEyes() {
     console.log("InitializeEyes");
     Eyes = require('eyes.selenium').Eyes;
     eyes = new Eyes();
-    eyes.setApiKey("YOUR_API_KEY");
+    eyes.setApiKey("ZH3tjrLWS1061i3fqivfsRXESn2ltoL6Uk1jTlb9gHCGQ110");
     eyes.setForceFullPageScreenshot(true);
     eyes.setStitchMode(Eyes.StitchMode.CSS);
     return eyes;
