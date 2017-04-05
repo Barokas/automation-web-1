@@ -347,6 +347,8 @@ function InitializeEyes() {
     eyes.setApiKey("ZH3tjrLWS1061i3fqivfsRXESn2ltoL6Uk1jTlb9gHCGQ110");
     eyes.setForceFullPageScreenshot(true);
     eyes.setStitchMode(Eyes.StitchMode.CSS);
+    var ConsoleLogHandler = require('eyes.selenium').ConsoleLogHandler;
+    eyes.setLogHandler(new ConsoleLogHandler(true));
     return eyes;
 
 }
@@ -356,7 +358,7 @@ function OpenEyes(eyes,driver,testName,appName,width,height) {
 }
 
 function CloseEyes(eyes,throwEx){
-    return eyes.close(throwEx).then(function (res) {
+    return eyes.close(false).then(function (res) {
         console.log();
         console.log("***************************************************************************************************************");
         console.log();
