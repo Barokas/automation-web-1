@@ -1,0 +1,9 @@
+sudo chmod -R 777 /var/db/lockdown/
+ideviceinstaller -l --> to list devices
+
+for real device: need provisioning similar to what IPA has (team, provisioning profile and certificate)
+for simulator: not required to have the same profile
+
+/Users/kanak/Library/Developer/Xcode/DerivedData
+
+/Users/kanak/Library/Developer/Xcode/DerivedData/WebDriverAgent-brdadhpuduowllgivnnvuygpwhzy/Build/Products/Debug-iphonesimulator/IntegrationApp.app

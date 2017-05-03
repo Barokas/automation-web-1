@@ -67,11 +67,12 @@ module.exports = (person, verb, action, crutches, application, done) => {
 		// assert.isNotOk('everything5', 'this will fail here');
 		
 	} else if (application === 'Airtasker' && action === 'out'){
-		
 		waitForVisible(person, "homePage.menu")
+		getBrowserFor(person).pause(frameworkSettings.maxPause)
 		clickElement(person, "click", "button", "homePage.menu", false)
 		
 		waitForVisible(person, "homePage.logoutButton")
+		getBrowserFor(person).pause(frameworkSettings.maxPause)
 		clickElement(person, "click", "button", "homePage.logoutButton", false)
 		
 		getBrowserFor(person).pause(frameworkSettings.medPause)
@@ -137,6 +138,22 @@ module.exports = (person, verb, action, crutches, application, done) => {
 		logging.silly(global.railsCurrentTaskURL)
 		getBrowserFor(person).url(global.railsCurrentTaskURL);
 
+	} else if (application === 'Facebook' && action === 'in'){
+		
+		var emailID  = getBrowserFor(person).options.facebookLoginEmail;
+		var password = getBrowserFor(person).options.facebookLoginPassword;
+	
+		logging.silly(person + " will be logged " + action + " " + crutches + " the application " + application);
+		logging.silly(person + " will be using the credentials: " + emailID + " / " + password);
+		
+		waitForVisible(person, "homePage.facebookLoginEmail")
+		getBrowserFor(person).setValue(homePage.facebookLoginEmail, emailID)
+		waitForVisible(person, "homePage.facebookLoginPassword")
+		getBrowserFor(person).setValue(homePage.facebookLoginPassword, password)
+	
+		waitForVisible(person, "homePage.facebookLoginButton")
+		clickElement(person, "click", "button", "homePage.facebookLoginButton", false)
+		
 	} else {
 		
 		assert.fail(1, 2, "No instructions available to log " + action + " " + crutches + " the application " + application, '###')

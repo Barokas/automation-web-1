@@ -1,3 +1,7 @@
+var frameworkSettings = require('./test/support/settings/framework.js')
+
+var stepTimeout = process.env.debug ? (24 * 60 * 60 * 1000) : frameworkSettings.stepTimeout
+
 exports.config = {
     //
     // ==================
@@ -151,7 +155,7 @@ exports.config = {
         profile: [],        // <string[]> (name) specify the profile to use
         strict: false,      // <boolean> fail if there are any undefined or pending steps
         tags: require('./test/tagProcessor'),           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-        timeout: 120000,     // <number> timeout for step definitions. Eyes tests require a lot more!
+        timeout: stepTimeout,     // <number> timeout for step definitions. Eyes tests require a lot more!
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },
 
@@ -184,45 +188,51 @@ exports.config = {
         var eyes;
 
         var opt = browser.options;
+		
+		var serverUrl = opt.protocol + '://' + opt.hostname + ':' + opt.port + '/wd/hub'; 
+		
+		if ( process.env.platform === 'browserstack' ) { serverUrl='https://' + 'kanakkalburgi1' + ':' +
+		'PZeWzNPghiDnVqvF8eYz' + '@hub-cloud.browserstack.com/wd/hub' }
+		
+        var ALL_SESSIONS	  		= JSON.stringify(browser.session())
+        var POSTER_SESSION_ID 		= JSON.stringify(browser.session().Poster.sessionId)
+        var WORKER_SESSION_ID 		= JSON.stringify(browser.session().Worker.sessionId)
 
-        var serverUrl = opt.protocol + '://' + opt.hostname + ':' + opt.port + '/wd/hub';
-        if ( process.env.platform === 'browserstack' ) {
-            serverUrl='https://' + 'kanakkalburgi1' + ':' + 'PZeWzNPghiDnVqvF8eYz' + '@hub-cloud.browserstack.com/wd/hub'
-        }        
-
-        var ALL_SESSIONS	  = JSON.stringify(browser.session())
-        var POSTER_SESSION_ID = JSON.stringify(browser.session().Poster.sessionId)
-        var WORKER_SESSION_ID = JSON.stringify(browser.session().Worker.sessionId)
+		var EYES_VIEWPORT	  		= process.env.eyesViewport || '1280x1100';
+		var EYES_VIEWPORT_WIDTH 	= parseInt(EYES_VIEWPORT.split('x')[0]);
+		var EYES_VIEWPORT_HEIGHT 	= parseInt(EYES_VIEWPORT.split('x')[1]);
+		
         console.log( POSTER_SESSION_ID + " ****** POSTER_SESSION_ID ****** ")
         console.log( WORKER_SESSION_ID + " ****** WORKER_SESSION_ID ****** ")
         console.log( ALL_SESSIONS + " ****** ALL_SESSIONS ****** ")
 
+
+        console.log( EYES_VIEWPORT_WIDTH + " ****** EYES_VIEWPORT_WIDTH ****** ")
+        console.log( EYES_VIEWPORT_HEIGHT + " ****** EYES_VIEWPORT_HEIGHT ****** ")
+		
         ////////////////// create_webdriver /////////////
         Poster_driver = create_webdriver(serverUrl, browser.session().Poster.sessionId);
         Worker_driver = create_webdriver(serverUrl, browser.session().Worker.sessionId);
 
-        ////////////////// Decleration of The dofferent Browsers /////////////
+        ////////////////// Declare Browsers /////////////
         var Poster_browser = browser.select('Poster');
-        var Worker_broswer = browser.select('Worker');
+        var Worker_browser = browser.select('Worker');
 
-        ////////////////// Create Instances od Eyes /////////////
+        ////////////////// Create Eyes Instances /////////////
 
         Poster_eyes = InitializeEyes();
-        Worker_eyes = InitializeEyes();
+		Worker_eyes = InitializeEyes();
 
-
-        Poster_browser.addCommand("EyesOpen", function async (testName,appName,width,height) {
-            if (appName == null){
-                appName="Poster"  // This will be the Default appName;
-            }
-            if (width == null){
-                width=800  // This will be the Default width value;
-            }
-            if (height == null){
-                height=600  // This will be the Default height value;
-            }
+        Poster_browser.addCommand("EyesOpen", function async (testName, appName) {
+			
+			if (appName == null) {
+				appName = "Poster"  // This will be the Default appName;
+			}
+			
             console.log("** Opening Poster eyes **");
-            return OpenEyes(Poster_eyes, Poster_driver, testName, appName, width, height);
+            global.posterEyesOpen = true
+            return OpenEyes(Poster_eyes, Poster_driver, testName, appName, EYES_VIEWPORT_WIDTH, EYES_VIEWPORT_HEIGHT);
+
         });
 
         Poster_browser.addCommand("EyesCheckWindow", function async(tag) {
@@ -235,27 +245,24 @@ exports.config = {
             return CloseEyes(Poster_eyes);
         });
 
-        Worker_broswer.addCommand("EyesOpen", function async (testName,appName,width,height) {
-            if (appName == null){
-                appName="Worker"  // This will be the Default appName;
-            }
-            if (width == null){
-                width=800  // This will be the Default width value;
-            }
-            if (height == null){
-                height=600  // This will be the Default height value;
-            }
+        Worker_browser.addCommand("EyesOpen", function async (testName, appName) {
+
+            if (appName == null) {
+				appName="Worker"  // This will be the Default appName;
+			}
 
             console.log("** Opening Worker eyes **");
-            return OpenEyes(Worker_eyes, Worker_driver, testName, appName, width, height);
-        });
+            global.workerEyesOpen = true 
+            return OpenEyes(Worker_eyes, Worker_driver, testName, appName, EYES_VIEWPORT_WIDTH, EYES_VIEWPORT_HEIGHT);
+        
+		});
 
-        Worker_broswer.addCommand("EyesCheckWindow", function async(tag) {
+        Worker_browser.addCommand("EyesCheckWindow", function async(tag) {
             console.log("** Worker Visually Checking Page: " + tag + " **");
             return Worker_eyes.checkWindow(tag);
         });
 
-        Worker_broswer.addCommand("EyesClose", function async(throwEx) {
+        Worker_browser.addCommand("EyesClose", function async(throwEx) {
             console.log("** Worker Closing eyes **")
             return CloseEyes(Worker_eyes,throwEx);
         });
@@ -274,11 +281,20 @@ exports.config = {
 
     afterScenario: function (feature) {
 
-			// Poster_broswer.EyesClose(true);
-            // Worker_broswer.EyesClose(true);
+        // if ( global.posterEyesOpen ) {
+        //     Poster_browser.EyesClose(true)
+        //     global.posterEyesOpen = false
+        // }
+
+        // if ( global.workerEyesOpen ) {
+        //     Worker_browser.EyesClose(true)
+        //     global.workerEyesOpen = false
+        // }
+			
+            
 
 			// return
-    }
+    },
 
         //
         // Hook that gets executed before the suite starts
@@ -317,8 +333,20 @@ exports.config = {
         //
         // Gets executed after all tests are done. You still have access to all global variables from
         // the test.
-        // after: function (result, capabilities, specs) {
-        // },
+        after: function (result, capabilities, specs) {
+
+        // if ( global.posterEyesOpen ) {
+        //     Poster_browser.EyesClose(true)
+        //     global.posterEyesOpen = false
+        // }
+
+        // if ( global.workerEyesOpen ) {
+        //     Worker_browser.EyesClose(true)
+        //     global.workerEyesOpen = false
+        // }
+
+
+        },
         //
         // Gets executed after all workers got shut down and the process is about to exit. It is not
         // possible to defer the end of the process using a promise.
@@ -346,6 +374,10 @@ function InitializeEyes() {
     eyes = new Eyes();
     eyes.setApiKey("ZH3tjrLWS1061i3fqivfsRXESn2ltoL6Uk1jTlb9gHCGQ110");
     eyes.setForceFullPageScreenshot(true);
+
+    // http://support.applitools.com/customer/portal/articles/2088359-match-levels
+    eyes.setMatchLevel('Content');
+
     eyes.setStitchMode(Eyes.StitchMode.CSS);
     var ConsoleLogHandler = require('eyes.selenium').ConsoleLogHandler;
     eyes.setLogHandler(new ConsoleLogHandler(true));
@@ -353,7 +385,7 @@ function InitializeEyes() {
 
 }
 
-function OpenEyes(eyes,driver,testName,appName,width,height) {
+function OpenEyes(eyes,driver, testName, appName, width, height) {
     return eyes.open(driver, appName, testName, {width: width, height: height});
 }
 
@@ -369,6 +401,12 @@ function CloseEyes(eyes,throwEx){
         console.log(res.appUrls.session);
         console.log();
         console.log("***************************************************************************************************************");
+
+        if (!res.isPassed) {
+            
+            assert.fail(1, 2, "Visual Check Failure - See " + res.appUrls.session, '###');
+        
+        }  
 
     });
 

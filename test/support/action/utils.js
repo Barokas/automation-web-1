@@ -109,6 +109,13 @@ export function getRandomData(type) {
 			
 	    },
 		
+        'price': function () {
+
+			data = chance.natural({min: 5, max: 2000}) 
+			return data
+			
+	    },
+		
         'email': function () {
 
 			data = chance.email()

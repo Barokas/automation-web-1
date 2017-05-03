@@ -5,24 +5,14 @@
   "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
   "main": "test/runner.js",
   "scripts": {
-    "local-webserver": "http-server ./demo-app",
-    "t1": "./wdio --spec test/demo.features/select.feature",
-    "worker-sign-up": "./wdio --spec test/features/worker_sign_up.feature wdio.stage.conf.js",
     "post-task": "./wdio --spec test/features/post_task_as_guest.feature wdio.stage.conf.js",
-    "post-task-dev": "./wdio --spec test/features/post_task_as_poster.feature wdio.poster.dev.conf.js",
+    "post-ikea-task": "./wdio --spec test/features/post_ikea_task_as_guest.feature wdio-eyes.stage.conf.js",
     "full-feature": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio.multiremote.stage.conf.js",
-    "full-feature-prod": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio.multiremote.prod.conf.js",
-    "full-feature-local": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio.multiremote.local.conf.js",
-    "recurring-local": "./wdio --spec test/features/post_task_recurring.feature wdio.poster.local.conf.js",
-    "recurring-stage": "./wdio --spec test/features/post_task_recurring.feature wdio.multiremote.stage.conf",
-    "t4": "./wdio --spec test/features/post_task_as_poster.feature wdio.poster.stage.conf.js",
-    "t5": "./wdio --spec test/features/change_location_as_poster.feature wdio.poster.stage.conf.js",
-    "change-avatar": "./wdio --spec test/features/change_avatar_as_poster.feature wdio.poster.stage.conf.js",
+    "full-feature-eyes": "./wdio --spec test/features-multiremote/post_and_claim_task_multi.feature wdio-eyes.multi.stage.conf.js",
+    "landing-pages": "./wdio --spec test/features/landing_pages_cta.feature wdio.stage.conf.js",
     "eyes-demo": "./wdio --spec test/features/eyes_demo.feature wdio-eyes.stage.conf.js",
 	"eyes-regression": "./wdio --spec test/features/eyes_regression.feature wdio-eyes.stage.conf.js",
-	"eyes-multi": "./wdio --spec test/features/eyes_regression_multi.feature wdio-eyes.multi.stage.conf.js",
-    "rails-delete-user": "./wdio --spec test/features/rails/delete_users.feature wdio.admin.stage.conf.js",
-    "rails-delete-user-prod": "./wdio --spec test/features/rails/delete_users_prod.feature wdio.admin.prod.conf.js"
+	"eyes-multi": "./wdio --spec test/features/eyes_regression_multi.feature wdio-eyes.multi.stage.conf.js"
   },
   "repository": {
     "type": "git",

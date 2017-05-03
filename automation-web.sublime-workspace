@@ -1,0 +1,786 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Wo",
+				"Worker goes to url \"input\"\tgiven"
+			],
+			[
+				"P",
+				"Poster pauses for [number]ms\twhen"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "wdio.conf.js",
+			"settings":
+			{
+				"buffer_size": 18865,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Feature: Test the attributes of a given element\n    As a developer\n    I want to be able to test the attributes of a given element\n\n    Background:\n        Given I go to site \"/\"\n\n    Scenario: The attribute \"role\" of a element should be \"note\"\n        Then  I expect that the attribute \"role\" from element \"#attributeComparison\" is \"note\"\n\n    Scenario: The attribute \"role\" of a element should not be \"main\"\n        Then  I expect that the attribute \"role\" from element \"#attributeComparison\" is not \"main\"\n\n    Scenario: The CSS attribute \"color\" of a element should be \"red\"\n        Then  I expect that the css attribute \"color\" from element \"#cssAttributeComparison\" is \"rgba(255,0,0,1)\"\n\n    Scenario: The CSS attribute \"color\" of a element should not be \"blue\"\n        Then  I expect that the css attribute \"color\" from element \"#cssAttributeComparison\" is not \" rgba(0,255,0,1)\"\n\n    Scenario: The (missing) CSS attribute \"border\" of a element should not be \"0\"\n        Then  I expect that the css attribute \"border\" from element \"#cssAttributeComparison\" is not \"0\"\n",
+			"file": "test/demo.features/attribute.feature",
+			"file_size": 1075,
+			"file_write_time": 131286461540000000,
+			"settings":
+			{
+				"buffer_size": 1075,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Feature: Principal Workflow\n  \nBackground: \n\t\tGiven Worker goes to site \"/\"\n\t\tGiven Poster goes to site \"/\"\n\t\tWhen  Poster logs \"in\" to \"Airtasker\"\n\t\tWhen  Worker logs \"in\" to \"Airtasker\"\n\t\t\nScenario: Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews\n\t\tThen  Poster expects that the title is \"homePage.title\"\n\t\tAnd   Poster expects that element \"homePage.postTaskLink\" becomes visible\n\t\tAnd   Poster clicks on the button \"homePage.postTaskLink\"\n\t\tThen  Poster expects that the currenturl is \"homePage.postLogin_postTask_URL\"\n\t\t\n\t\t# 1. Details Screen\n\t\tAnd   Poster expects that element \"homePage.postTaskTitle\" becomes visible\n\t\tThen  Poster expects that inputfield \"homePage.postTaskTitle\" does not contain any text\n\t\tAnd   Poster sets \"random.title\" to the inputfield \"homePage.postTaskTitle\"\n\t\tAnd   Poster sets \"random.paragraph\" to the inputfield \"homePage.postTaskDescriptionInput\"\n\t\tAnd   Poster expects that element \"homePage.taskDetailsButton\" becomes visible\n\t\tWhen  Poster clicks on the button \"homePage.taskDetailsButton\" and expects element \"homePage.physicalOrOnline\" to be visible\n\n\t\t# 2. Location Dialog\n\t\tThen  Poster expects that element \"homePage.postTaskLocationInput\" becomes visible\n\t\tWhen  Poster sets \"profilePage.location\" to the inputfield \"homePage.postTaskLocationInput\"\n\t\tAnd   Poster expects that inputfield \"homePage.postTaskLocationInput\" contains the text \"profilePage.location\"\n\t\tAnd   Poster pauses for 1000ms\n\t\tThen  Poster presses \"keys.down\"\n\t\tThen  Poster presses \"keys.enter\"\n\t\tThen  Poster expects that inputfield \"homePage.postTaskLocationInput\" contains the text \"profilePage.locationResult\"\n\t\tAnd   Poster clicks on the button \"homePage.taskLocationButton\" and expects element \"homePage.paymentAmount\" to be visible\n\t\t\n\t\t# 3. Budget Dialog\n\t\tWhen  Poster sets \"taskDetails.amount\" to the inputfield \"homePage.paymentAmount\"\n\t\tAnd   Poster clicks on the button \"homePage.pricingButton\"\n\t\tAnd   Poster expects that element \"homePage.taskPostedSuccessNoLoader\" has the class \"homePage.taskPostedSuccessNoLoaderClass\"\n\t\tAnd   Poster expects that element \"homePage.postTaskForm\" becomes visible\n\t\tWhen  Poster clicks on the button \"homePage.allDoneButton\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.dialog\" does not have the class \"taskDetailsPage.dialogDisplayedClass\"\n\t\tThen  I capture task details of Poster\n\n\t\tThen  Poster expects that the currenturl is \"global.taskURL\"\n\t\tThen  Poster expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusAwaitingOffers\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassDisabled\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepOpen\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepAcceptedGreyed\" does not have the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepPaidGreyed\" does not have the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepReviewedGreyed\" does not have the class \"taskDetailsPage.classCompleted\"\n\n\t\tThen  Worker expects the posted task to be available\n\t\tThen  Worker expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusMakeOffer\"\n\t\tThen  Worker clicks on the button \"taskDetailsPage.taskStatusButton\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.dialog\" becomes visible\n\t\tAnd   Worker expects that element \"taskDetailsPage.offerHeader\" contains the text \"taskDetailsPage.offerMakeHeaderValue\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.offerComment\" becomes visible\n\t\tAnd   Worker sets \"random.paragraph\" to the inputfield \"taskDetailsPage.offerComment\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.offerContinueButton\"\n\n\t\t# Preview Offer and Submit\n\t\tAnd   Worker expects that element \"taskDetailsPage.offerPreviewDialog\" becomes visible\n\t\tAnd   Worker expects that element \"taskDetailsPage.offerHeader\" contains the text \"taskDetailsPage.offerPreviewHeaderValue\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.offerPreviewTaskPrice\" contains the price \"taskDetails.amount\"\n\t\t# And   Worker expects that element \"taskDetailsPage.offerPreviewTitle\" contains the quotedText \"taskDetails.title\"\n\t\tAnd   Worker clicks on terms if presented\n\t\tAnd   Worker expects that element \"taskDetailsPage.offerSubmitButton\" has the class \"taskDetailsPage.buttonClassEnabled\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.offerSubmitButton\"\n\n\t\t# Bid Submit Status Dialog\n\t\tAnd   Worker expects that element \"taskDetailsPage.bidSubmitStatusDialog\" becomes visible\n\t\tAnd   Worker expects that element \"taskDetailsPage.bidSubmitHeader\" contains the text \"taskDetailsPage.bidSuccessMessage\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.bidSubmitCloseButton\"\n\n\t\t# Poster Reviews Offers\n\t\tThen  Poster expects that the currenturl is \"global.taskURL\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassEnabled\"\n\t\tThen  Poster expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusReviewOffer\"\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.taskStatusButton\"\n\n\t\t# Poster Accepts Offer\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignDialog\" becomes visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignHeader\" contains the text \"taskDetailsPage.taskAssignHeaderMessage\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignAcceptOfferButton\" becomes visible\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.taskAssignAcceptOfferButton\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignAddFundsDialog\" becomes visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignAddFundsHeader\" contains the text \"taskDetailsPage.taskAssignAddFundsHeaderMessage\"\n\t\tAnd   Poster clicks on terms if presented\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignAddFundsAcceptButton\" has the class \"taskDetailsPage.buttonClassEnabled\"\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.taskAssignAddFundsAcceptButton\"\n\t\tAnd   Poster waits for element \"taskDetailsPage.taskAssignSuccessNoLoader\" to appear\n\t\tAnd   Poster expects that element \"taskDetailsPage.errorDialog\" is not visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignSuccessDialog\" becomes visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskAssignSuccessHeader\" contains the text \"taskDetailsPage.taskAssignSuccessHeaderMessage\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.congratsScreenSendMessageCTAButton\" becomes visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.congratsScreenCallCTAButton\" becomes visible\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.congratsScreenClose\"\n\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepOpen\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepAccepted\" has the class \"taskDetailsPage.classCompleted\"\n\t\tThen  Poster expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusPrivateMessage\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassEnabled\"\n\n\t\t# Worker Requests Payment\n\n\t\tThen  Worker expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusRequestPayment\"\n\t\tThen  Worker clicks on the button \"taskDetailsPage.taskStatusButton\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.requestPaymentDialog\" becomes visible\n\t\tAnd   Worker expects that element \"taskDetailsPage.requestPaymentHeader\" contains the text \"taskDetailsPage.requestPaymentHeaderMessage\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.requestPaymentTaskPrice\" contains the price \"taskDetails.amount\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.requestPaymentButton\"\n\n\t\t# # Request Payment Status Dialog\n\t\tAnd   Worker waits for element \"taskDetailsPage.requestPaymentSuccessNoLoader\" to appear\n\t\tAnd   Worker expects that element \"taskDetailsPage.requestPaymentStatusDialog\" becomes visible\n\n\t\tAnd   Worker expects that element \"taskDetailsPage.requestPaymentStatusHeader\" contains the text \"taskDetailsPage.requestPaymentSuccessMessage\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.requestPaymentStatusCloseButton\"\n\t\t# todo: taskURL will be different from now on: change my-tasks to tasks\n\t\t# Then  Worker expects that the currenturl is \"global.taskURL\"\n\t\tThen  Worker expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusAwaitingPayment\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassDisabled\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.stepOpen\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.stepAccepted\" has the class \"taskDetailsPage.classCompleted\"\n\t\t# And   Worker expects that element \"taskDetailsPage.stepPaidGreyed\" does not have the class \"taskDetailsPage.classCompleted\"\n\t\t# And   Worker expects that element \"taskDetailsPage.stepReviewedGreyed\" does not have the class \"taskDetailsPage.classCompleted\"\n\n\t\t# Poster Releases Payment\n\t\t# Then  Poster expects that the currenturl is \"global.taskURL\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassEnabled\"\n\t\tThen  Poster expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusReleasePayment\"\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.taskStatusButton\"\n\n\t\tAnd   Poster expects that element \"taskDetailsPage.confirmReleaseDialog\" becomes visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.confirmReleaseHeader\" contains the text \"taskDetailsPage.confirmReleaseHeaderMessage\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.confirmReleaseTaskPrice\" contains the price \"taskDetails.amount\"\n\t\t# And   Poster expects that element \"taskDetailsPage.confirmReleaseTaskTitle\" contains the quotedText \"taskDetails.title\"\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.confirmReleaseFundsButton\"\n\n\t\tAnd   Poster expects that element \"taskDetailsPage.errorDialog\" is not visible\n\t\t# todo: handle retry (go back and click on release again)\n\t\t\n\t\t# Poster Leaves Review\n\t\tAnd   Poster waits for element \"taskDetailsPage.writeReviewDialogNoLoader\" to appear\n\t\tAnd   Poster expects that element \"taskDetailsPage.writeReviewDialog\" becomes visible\n\n\t\t# Poster sees the Write Review Dialog\n\t\t# todo: current url verification /tasks/<taskslug>/write-review/<taskslug>/\n\n\t\tAnd   Poster expects that element \"taskDetailsPage.writeReviewDialogHeader\" contains the text \"taskDetailsPage.writeReviewHeaderMessage\"\n\t\tAnd   Poster clicks on the element \"taskDetailsPage.threeStars\"\n\t\tAnd   Poster sets \"random.paragraph\" to the inputfield \"taskDetailsPage.writeReviewInput\"\t\t\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.writeReviewSubmitButton\"\n\n\t\tAnd   Poster expects that element \"taskDetailsPage.reviewSentDialog\" becomes visible\n\t\tAnd   Poster expects that element \"taskDetailsPage.reviewSentDialogHeader\" contains the text \"taskDetailsPage.reviewSentHeaderMessage\"\n\t\tAnd   Poster clicks on the button \"taskDetailsPage.reviewSentCloseButton\"\n\n\t\t# Worker Leaves Review\n\t\tThen  Worker expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusLeaveReview\"\n\t\tThen  Worker clicks on the button \"taskDetailsPage.taskStatusButton\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.writeReviewDialog\" becomes visible\n\t\tAnd   Worker expects that element \"taskDetailsPage.writeReviewDialogHeader\" contains the text \"taskDetailsPage.writeReviewHeaderMessage\"\n\t\tAnd   Worker clicks on the element \"taskDetailsPage.fourStars\"\n\t\tAnd   Worker sets \"random.paragraph\" to the inputfield \"taskDetailsPage.writeReviewInput\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.writeReviewSubmitButton\"\n\n\t\tAnd   Worker expects that element \"taskDetailsPage.reviewSentDialog\" becomes visible\n\t\tAnd   Worker expects that element \"taskDetailsPage.reviewSentDialogHeader\" contains the text \"taskDetailsPage.reviewSentHeaderMessage\"\n\t\tAnd   Worker clicks on the button \"taskDetailsPage.reviewSentCloseButton\"\n\n\n\t\t# Then  Poster expects that the currenturl is \"global.taskURL\"\n\t\tThen  Poster expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassDisabled\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepOpen\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepAccepted\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepPaid\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Poster expects that element \"taskDetailsPage.stepReviewed\" has the class \"taskDetailsPage.classCompleted\"\n\n\t\t# Then  Worker expects that the currenturl is \"global.taskURL\"\n\t\tThen  Worker expects that element \"taskDetailsPage.taskStatusButton\" contains the text \"taskDetailsPage.taskStatusCompleted\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.taskStatusButton\" has the class \"taskDetailsPage.buttonClassDisabled\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.stepOpen\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.stepAccepted\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.stepPaid\" has the class \"taskDetailsPage.classCompleted\"\n\t\tAnd   Worker expects that element \"taskDetailsPage.stepReviewed\" has the class \"taskDetailsPage.classCompleted\"\n\n\t\tGiven Poster expects that element \"elementID\" becomes visible\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+			"file": "test/features-multiremote/post_and_claim_task_multi.feature",
+			"file_size": 14152,
+			"file_write_time": 131374812730000000,
+			"settings":
+			{
+				"buffer_size": 14149,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/steps/then.js",
+			"settings":
+			{
+				"buffer_size": 7597,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "wdio.multiremote.stage.conf.js",
+			"settings":
+			{
+				"buffer_size": 2890,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/support/action/waitForVisible.js",
+			"settings":
+			{
+				"buffer_size": 2026,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/support/pageObjects/homePage.js",
+			"settings":
+			{
+				"buffer_size": 12669,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/support/pageObjects/taskDetails.js",
+			"settings":
+			{
+				"buffer_size": 502,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/support/pageObjects/taskDetailsPage.js",
+			"settings":
+			{
+				"buffer_size": 13956,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/support/settings/framework.js",
+			"settings":
+			{
+				"buffer_size": 1262,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/steps/given.js",
+			"settings":
+			{
+				"buffer_size": 4426,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/support/action/personaLogin.js",
+			"settings":
+			{
+				"buffer_size": 6833,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"snipp",
+				"Snippet: When Step Plaintext"
+			],
+			[
+				"snippet",
+				"Snippet: Scenario (heading only)"
+			],
+			[
+				"snippet: wh",
+				"Snippet: When Step Plaintext"
+			],
+			[
+				"form",
+				"Table Cleaner: Clean Table imported from a website"
+			],
+			[
+				"snippe",
+				"Snippet: When Step Plaintext"
+			],
+			[
+				"scenar",
+				"Snippet: Scenario Outline"
+			],
+			[
+				"sce",
+				"Snippet: Scenario"
+			],
+			[
+				"feature",
+				"Snippet: Feature"
+			],
+			[
+				"set gher",
+				"Set Syntax: Gherkin"
+			],
+			[
+				"then",
+				"Snippet: Then Step"
+			],
+			[
+				"given",
+				"Snippet: Given Step"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/kanak/repos/automation-web",
+		"/Users/kanak/repos/automation-web/allure-report",
+		"/Users/kanak/repos/automation-web/helpers",
+		"/Users/kanak/repos/automation-web/test",
+		"/Users/kanak/repos/automation-web/test/features",
+		"/Users/kanak/repos/automation-web/test/features-multiremote"
+	],
+	"file_history":
+	[
+		"/Users/kanak/repos/automation-web/test/features/change_avatar_as_poster.feature",
+		"/Users/kanak/repos/automation-web/helpers/.bashrc",
+		"/Users/kanak/Library/Application Support/Sublime Text 3/Packages/Gherkin Auto-Complete Plus/Gherkin Auto-Complete Plus.sublime-settings",
+		"/Users/kanak/repos/automation-web/test/features/worker_sign_up.feature",
+		"/Users/kanak/Library/Application Support/Sublime Text 3/Packages/User/Gherkin Auto-Complete Plus.sublime-settings",
+		"/Users/kanak/repos/automation-web/node_modules/cucumber/lib/cucumber/listener/snippets_formatter.js",
+		"/Users/kanak/repos/tmt/agileui-monarch-c8bad1ffe0c8/assets/sheeters.js",
+		"/Users/kanak/repos/tmt/agileui-monarch-c8bad1ffe0c8/src/partials/admin/header.hbs",
+		"/Users/kanak/repos/tmt/agileui-monarch-c8bad1ffe0c8/assets/readandpopulate.js",
+		"/Users/kanak/repos/tmt/agileui-monarch-c8bad1ffe0c8/production/admin-template/colors.html",
+		"/Users/kanak/repos/tmt/agileui-monarch-c8bad1ffe0c8/src/pages/admin/colors.hbs",
+		"/Users/kanak/repos/tmt/agileui-monarch-c8bad1ffe0c8/assets/setScenarioVariables.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"formatdata",
+			"loadmodel",
+			"cookie",
+			"submitscenario",
+			"format data",
+			"turnthekm",
+			"formatDa",
+			"formatDi",
+			"onclic",
+			"cookie",
+			"jqallrange",
+			"cookie",
+			"business model"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "wdio.conf.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9895,
+								9895
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4266.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "test/demo.features/attribute.feature",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								737,
+								737
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "test/features-multiremote/post_and_claim_task_multi.feature",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								277,
+								281
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Gherkin Auto-Complete Plus/Cucumber Plain Text Feature.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "test/steps/then.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7597,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2757,
+								2766
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 969.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "wdio.multiremote.stage.conf.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "test/support/action/waitForVisible.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2026,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1728,
+								1728
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 395.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "test/support/pageObjects/homePage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12669,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7691,
+								7724
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2048.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "test/support/pageObjects/taskDetails.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "test/support/pageObjects/taskDetailsPage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "test/support/settings/framework.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1262,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								771,
+								771
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "test/steps/given.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4426,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 34.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "test/support/action/personaLogin.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1843,
+								1843
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 425.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "automation-web.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"waitforvisi",
+				"test/support/action/waitForVisible.js"
+			],
+			[
+				"then",
+				"test/steps/then.js"
+			],
+			[
+				"given",
+				"test/steps/given.js"
+			],
+			[
+				"framewor",
+				"test/support/settings/framework.js"
+			],
+			[
+				"taskd",
+				"test/support/pageObjects/taskDetailsPage.js"
+			],
+			[
+				"taskde",
+				"test/support/pageObjects/taskDetails.js"
+			],
+			[
+				"homepa",
+				"test/support/pageObjects/homePage.js"
+			],
+			[
+				"persona",
+				"test/support/action/personaLogin.js"
+			],
+			[
+				"feature",
+				"test/demo.features/attribute.feature"
+			],
+			[
+				"snippet",
+				"node_modules/cucumber/lib/cucumber/listener/snippets_formatter.js"
+			],
+			[
+				"worker_sign",
+				"test/features/worker_sign_up.feature"
+			],
+			[
+				"header.h",
+				"src/partials/admin/header.hbs"
+			],
+			[
+				"set",
+				"assets/setScenarioVariables.js"
+			],
+			[
+				"header.hb",
+				"src/partials/admin/header.hbs"
+			],
+			[
+				"sheeter",
+				"assets/sheeters.js"
+			],
+			[
+				"colors.ht",
+				"production/admin-template/colors.html"
+			],
+			[
+				"readan",
+				"assets/readandpopulate.js"
+			],
+			[
+				"colors.hb",
+				"src/pages/admin/colors.hbs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

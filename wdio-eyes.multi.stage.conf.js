@@ -9,11 +9,14 @@ var browserstack_username	= require('./wdio.conf.js').browserstack_username;
 var browserstack_password	= require('./wdio.conf.js').browserstack_password;
 
 var chosenConfig 	= ''
-var environment		= 'stage'
+var environment		= 'prod'
 var subDomain		= environment
 
+var browserstackResolution	= process.env.resolution || '1600x1200';
+var browserstackSessionName = process.env.feature || 'default-';
+
 config.basicAuthPassword 		= ''
-config.baseUrl 	= 'http://google.com';
+config.baseUrl 	= process.env.baseUrl || httpProtocol + '://' + 'www.' + airtaskerDomain + '.com';
 config.myTasksSeparator = myTasksSeparator
 
 config.specs = [
@@ -21,15 +24,25 @@ config.specs = [
 ];
 
 global.actorlist = config.capabilities = {
-   
+	
+	// https://www.browserstack.com/automate/capabilities
+	// https://www.browserstack.com/automate/webdriverio   
+
+	
+	
     Poster: {
 		
 			desiredCapabilities: {
+
+				os: 'OS X',
+				os_version: 'El Capitan',
 				browserName: 'chrome',
-				resolution: '1280x1024',
+				browser_version: '55.0',
+				resolution: browserstackResolution,
 				build: 'Stage',
 				project: 'Airtasker Web',
-				name: 'full-feature-poster'
+				'browserstack.idleTimeout': '300',
+				name: browserstackSessionName + '-poster'
         	},
 
     		emailID: '',
@@ -39,11 +52,15 @@ global.actorlist = config.capabilities = {
     Worker: {
 		
 			desiredCapabilities: {
+				os: 'OS X',
+				os_version: 'El Capitan',
 				browserName: 'chrome',
-				resolution: '1280x1024',
+				browser_version: '55.0',
+				resolution: browserstackResolution,
 				build: 'Stage',
 				project: 'Airtasker Web',
-				name: 'full-feature-worker'
+				'browserstack.idleTimeout': '300',
+				name: browserstackSessionName + '-worker'
            	},
 
     		emailID: '',

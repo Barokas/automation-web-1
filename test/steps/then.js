@@ -1,3 +1,4 @@
+import pushPopGlobal from '../support/action/pushPopGlobal';
 import checkTitle from '../support/check/checkTitle';
 import isVisible from '../support/check/isVisible';
 import waitForVisible from '../support/action/waitForVisible';
@@ -12,6 +13,7 @@ import checkCurrentRelativeURL from '../support/check/checkCurrentRelativeURL';
 import checkURLPath from '../support/check/checkURLPath';
 import checkInURLPath from '../support/check/checkInURLPath';
 import checkProperty from '../support/check/checkProperty';
+import navigateFirstTask from '../support/check/navigateFirstTask';
 import checkSelected from '../support/check/checkSelected';
 import isEnabled from '../support/check/isEnabled';
 import checkCookieContent from '../support/check/checkCookieContent';
@@ -32,10 +34,19 @@ import captureEyes from '../support/action/captureEyes';
 import closeEyes from '../support/action/closeEyes';
 import goToPostedTask from '../support/action/goToPostedTask';
 import pickDate from '../support/action/pickDate';
+import commentCounter from '../support/action/commentCounter';
+import profileTracker from '../support/action/profileTracker';
+import reloadPage from '../support/action/reloadPage';
 
 var frameworkSettings	= require('../support/settings/framework.js');
 
 module.exports = function then() {
+	
+    this.Then(
+        /^([^ ]*) (push|pushes|pop|pops) "([^"]*)?"$/,
+        pushPopGlobal
+    );
+	
     this.Then(
         /^([^ ]*) expect(?:s)? that the title is( not)* "([^"]*)?"$/,
         checkTitle
@@ -110,6 +121,11 @@ module.exports = function then() {
     this.Then(
         /^([^ ]*) expect(?:s)? that the( css)* attribute "([^"]*)?" from element "([^"]*)?" is( not)* "([^"]*)?"$/, { retry: frameworkSettings.retryCountMin },
         checkProperty
+    );
+	
+    this.Then(
+        /^([^ ]*) navigate(?:s)? to the first task$/,
+        navigateFirstTask
     );
 
     this.Then(
@@ -206,9 +222,24 @@ module.exports = function then() {
         /^([^"]*)? picks any date from the datepicker$/,
         pickDate
     );
-
+	
     this.Then(
-        /^([^"]*)? closes Eyes$/,
+        /^([^"]*)? (records|verifies) count of comments$/,
+        commentCounter
+    );
+	
+    this.Then(
+        /^([^"]*)? (records|verifies) expected profile$/,
+        profileTracker
+    );
+	
+    this.Then(
+        /^([^"]*)? reload(?:s)? current page$/,
+        reloadPage
+	);
+	
+    this.Then(
+        /^([^"]*)? close(?:s)? Eyes$/,
         closeEyes
     );
 	

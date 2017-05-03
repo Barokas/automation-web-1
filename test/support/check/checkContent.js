@@ -51,7 +51,8 @@ module.exports = (
 	if (expectedFormat === 'price') {
 		expectedText = taskDetails.currency + expectedText
 	} else if (expectedFormat === 'quotedText') {
-		expectedText = "\“" + expectedText + "\”"
+		// expectedText = "\“" + expectedText + "\”"
+		expectedText = "\"" + expectedText + "\""
 	} 
 	
 	logging.verbose("*expectedText: " + expectedText)

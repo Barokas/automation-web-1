@@ -6,6 +6,7 @@ var homePage = {
 	profile_URL: '/account/profile/',
 	preLogin_postTask_URL: '/post-task/',
 	postLogin_postTask_URL: '/account/dashboard/post-task/',
+	browseTasks_URL: '/tasks/',
 	postSignup_registration_URL: '/sign-up/user-registration/',
 	profile_URL: '/account/profile/',
 	postTask_signUpContext_URL: '/post-task/sign-up/?context=post-task',
@@ -18,19 +19,29 @@ var homePage = {
 	taskPostedSuccessNoLoaderClass: 'loaderific-not-loading',
 	postTaskFormTitle: '#form-title',
 	postTaskFormTitleValue: 'Get FREE Quotes',
-	loginForm: '#dialog-stack > div:nth-child(2) > div > div > div.login-form',
+	browseTasksLink: '#header #menu-cta .browse-tasks-link',
+	loginForm: '#dialog-stack > div:nth-child(2) > dialogiv > div > div.login-form',
 
+	openTasksLink: '#tasks-menu > div.tasks-menu.web > a.open-tasks',
+	
 	howItWorksLink: '#header #menu-cta .how-it-works-link',
 	postTaskTitle: '.post-task-form #post-task-title',
 	errorMessage: '.error-message',
 	postTaskDescriptionInput: '#post-task-description',
 	taskDetailsButton: '#ui-test-task-details-button',
-	toggleLogin: '.dialog .login-form #toggle-login',
+	templateContinueButton: '#ui-test-template-continue-button',
+	toggleLogin: '#toggle-login',
 	loginLink: 'Login',
 	emailInput: '#email-input',
 	passwordInput: '#password-input',
 	loginButton: '.dialog .login-form #login-button',
 	signupButton: '.dialog .login-form #sign-up-button',
+	
+	facebookLoginCTA: 'div.login-form > div.dialog-panel-body > div > div:nth-child(2) > div:nth-child(1) > button',
+	facebookLoginEmail: '#email',
+	facebookLoginPassword: '#pass',
+	facebookLoginButton: '#loginbutton',
+	
 	taskDetailsButton: '.dialog .post-task-form #ui-test-task-details-button',
 	taskLocationButton: '#ui-test-location-button',
 	recurringDateButton: '#ui-test-recurring-date-button',
@@ -41,6 +52,9 @@ var homePage = {
 	onlineTask: '#online-task',
 	onceOffTask: '#once-off-input',
 	recurringTask: '#recurring-input',
+	dueToday: '#completed-Today0',
+	postTaskPayTotal: '#post-task-pay-total',
+	postTaskPayHourly: '#post-task-pay-hourly',
 	dueDateSelection: '#recurring-date-step > div.margin-20-top > div.air-date-picker > div > div.cell.input-cell > div',
 	recurringInterval: '#recurring-interval-input',
 	recurringInterval_2_weeks: '.air-select option:nth-child(2)',
@@ -66,15 +80,14 @@ var homePage = {
 	profileMenu: '#menu-popup > div.menu-folder.expanded > div.menu-folder-items.showing > a:nth-child(1)',
 	logoutButton: '//*[@id="menu-popup"]/div[5]/div/a',
 	
-	closeDialog: 'close-cross',
+	closeDialog: 'div.close-cross',
 	
 	/* site alert */
 	siteAlertButton: '#header > div.site-alert > div > div.message-content.message-tail > button',
 	termsConditionsText: 'I Agree to the Terms & Conditions',
-	
 	/* Onboarding Section */
-	userRegistrationForm: '#dialog-stack > div:nth-child(2) > div > div > div.user-registration-form',
-	userRegistrationHeader: '#dialog-stack > div:nth-child(2) > div > div > div > div.dialog-panel-header.border-none.with-subheading > div:nth-child(1)',
+	userRegistrationForm: 'div.user-registration-form',
+	userRegistrationHeader: 'div.dialog-panel-header > div',
 	signupSuccessMessage: 'Welcome!',
 	newUserOnbardingFirstName: '#first-name',
 	newUserOnbardingLastName: '#last-name',
@@ -83,9 +96,8 @@ var homePage = {
 	chooseWorkerProfile: '#is-runner',
 	choosePosterProfile: '#is-sender',
 	createProfileButton: '#ui-test-create-profile-button',
-	
 	onboardingStepDialog: '#dialog-stack > div > div > div > div.anchovy-form > div',
-	onboardingHeader: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-header.border-none.with-subheading > div:nth-child(1)',
+	onboardingHeader: 'div.dialog-panel-header.border-none.with-subheading > div:nth-child(1)',
 	uploadAvatarHeaderMessage: 'Upload a profile picture',
 	
 	postTaskLocationInput: '#location-input',
@@ -95,24 +107,27 @@ var homePage = {
 	uploadAvatarFinalButton: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div.attachment-input-holder > div.attachment-upload.button-cta.button-med',
 	avatarUploadedSuccessNoLoader: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div.loaderific-not-loading',
 	
+	mainLoader: '#page-and-screen-content > div.content > div > div.task-list > div.loaderific-not-loading',
+	
 	addSkillsHeaderMessage: 'Let us know what your skills are',
 	
 	addMobileNumberMessage: 'Mobile Number',
-	mobileNumberInput: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div > div.anchovy-verify-mobile.anchovy-form-item > input[type="tel"]',
-	sendVerificationCodeButton: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div > div.anchovy-verify-mobile.anchovy-form-item > button',
+	mobileNumberInput: '#newMobile',
+	sendVerificationCodeButton: 'div.anchovy-verify-mobile.anchovy-form-item > div.margin-10-top > button',
 	
-	verificationCodeSentDialog: '#dialog-stack > div:nth-child(2) > div > div > div.generic-alert.anchovy-form',
-	verificationCodeHeader: '#dialog-stack > div:nth-child(2) > div > div > div.generic-alert.anchovy-form > div.dialog-panel-header',
+	verificationCodeSentDialog: 'div.generic-alert.anchovy-form',
+	verificationCodeHeader: 'div.generic-alert.anchovy-form > div.dialog-panel-header',
 	verificationCodeSentSuccessMsgTitle: 'Verification Code Sent',
-	verificationCodeBody: '#dialog-stack > div:nth-child(2) > div > div > div.generic-alert.anchovy-form > div.dialog-panel-body > div > div',
+	verificationCodeBody: 'div.generic-alert.anchovy-form > div.dialog-panel-body > div > div',
 	verificationCodeBodyMessage: 'You should receive a 6-digit mobile verification code in a few minutes.',
-	verificationAlertOKButton: '#dialog-stack > div:nth-child(2) > div > div > div.generic-alert.anchovy-form > div.dialog-panel-footer > button',
+	verificationAlertOKButton: 'div.generic-alert.anchovy-form > div.dialog-panel-footer > button',
 	
-	verificationCodeInput: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div > div.anchovy-verify-mobile.anchovy-form-item > input[type="number"]',
-	verificationCodeDisplay: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div > div.anchovy-verify-mobile.anchovy-form-item > div',
+	verificationCodeInput: '#verificationCode',
+	verificationCodeDisplay: 'div.anchovy-verify-mobile.anchovy-form-item > div',
 	
-	verificationCodeChangeButton: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div > div.anchovy-verify-mobile.anchovy-form-item > button:nth-child(2)',
-	verificationCodeRemoveButton: '#dialog-stack > div > div > div > div.anchovy-form > div > div.dialog-panel-body > div > div > div > div.anchovy-verify-mobile.anchovy-form-item > button:nth-child(3)',
+	verifyMobileButton: 'div.anchovy-verify-mobile.anchovy-form-item > div:nth-child(5) > button',
+	verificationCodeChangeButton: 'div.anchovy-verify-mobile.anchovy-form-item > button.button-min.button-sml.change-mobile',
+	verificationCodeRemoveButton: 'div.anchovy-verify-mobile.anchovy-form-item > button.button-min.button-sml.remove-mobile',
 	
 	moreAboutYouDialogHeaderMessage: 'Tell us more about you',
 	moreAboutYouDescriptionInput: '#description-input',
@@ -151,7 +166,55 @@ var homePage = {
 	taskTypeWithLocation: '#page-and-screen-content > div.content > div > div.task-list > div.task-search > div.padder-0-10 > div:nth-child(2) > div.button-bar > a:nth-child(2)',
 	baseLocation: '#location-input',
 	updateButton: '#update-button',
-	taskIDforRegression: '#automated-visual-regression-305531'
+	taskIDforRegression: '#automated-visual-regression-354701',
+	
+	taskListItem: '.task-list .task-list-item',
+	dataTaskId: 'data-task-id',
+	taskDetails: '.task-details',
+	taskActivityComments: '.task-details .task-activity-comments',
+	commentTextArea: 'div.add-comm-form.anchovy-form > div.text-area > div > textarea',
+	commentSendButton: 'div.add-comm-form.anchovy-form > div.buttons > button',
+	commentSentLoader: 'div.add-comm-form.anchovy-form > div.loaderific-not-loading',
+	
+	
+	redeemCardButton: 'div.redeem-screen > div.intro-container > div > div.text-container > button',
+	redeemCardURL: '/redeem/enter-redeem-code/',
+	redeemCardDialog: 'div.redeem-dialog.anchovy-form',
+	redeemCardHeader: 'div.redeem-dialog.anchovy-form > div.dialog-panel-header',
+	redeemCardHeaderMessage: 'Airtasker Card',
+	redeemCode: '6666666666666666666',
+	redeemCardNumber: '#ui-test-enter-code',
+	redeemCardSubmitButton: 'div.redeem-dialog.anchovy-form > div.dialog-panel-footer > button',
+	redeemSuccessDialog: 'div.redeem-dialog.anchovy-form',
+	redeemSuccessHeader: 'div.redeem-dialog.anchovy-form > div.dialog-panel-header',
+	redeemSuccessHeaderMessage: 'Task Credit redeemed',
+	redeemSuccessGoToDashboard: 'div.redeem-dialog.anchovy-form > div.dialog-panel-footer > button',
+	
+	/* IKEA */
+
+	button: 'button',
+	getStarted: 'Get started',
+	articleSearchField: '#product-search-input',
+	ikeaArticle: 'box',
+	articleSuggestionQuantity: '#ikea-product-select > div.search-area > div > div.ikea-product-search > div.search-results > div > div:nth-child(1) > div > div:nth-child(3) > div.number-incrementor > div > input[type="number"]',
+	articleSuggestionQuantityIncrement: '#ikea-product-select > div.search-area > div > div.ikea-product-search > div.search-results > div > div:nth-child(1) > div > div:nth-child(3) > div.number-incrementor > div > button:nth-child(3)',
+	articleSuggestionAdd: '#ikea-product-select > div.search-area > div > div.ikea-product-search > div.search-results > div > div:nth-child(1) > div > div:nth-child(5) > button',
+	articleListFinalQuantity: '#ikea-product-select > div.margin-20-0 > div > div.item-list-container > div > div > div:nth-child(3) > div.number-incrementor > div > input[type="number"]',
+	totalEstimatedBudget: '#ikea-post-task-footer > div > div > table > tbody > tr.text-h5 > td:nth-child(1)',
+	ikeaContinue: '#ikea-post-task-footer > div > button',
+	ikeaSignupURL: '/sign-up/',
+	ikeaPostTaskTitle: '#ikea-post-task-body > div:nth-child(1) > div.ikea-post-task-details > div > div:nth-child(1) > input',
+	ikeaPostTaskTitleValue: 'IKEA - Furniture Assembly',
+	ikeaContinueButton: '#ikea-post-task-footer > button',
+	ikeaDueToday: '#date-picker-component > form > div.radio-set.margin-10-bottom > span:nth-child(1) > label',
+	ikeaDueDueCertainDay: '#date-picker-component > form > div.radio-set.margin-10-bottom > span:nth-child(2) > label',
+	ikeaDueInAWeek: '#date-picker-component > form > div.radio-set.margin-10-bottom > span:nth-child(3) > label',
+	ikeaEstimatedBudget: '#task-budget-input',
+	getQuotes: 'Get Quotes Now',
+	ikeaTaskPostedMessage: '#ikea-post-task-body > div.ikea-post-task-confirmation > div.content.content-xs > h3',
+	ikeaTaskPostedMessageValue: 'Congratulations!'
+
+	
 };
 
 module.exports = homePage;

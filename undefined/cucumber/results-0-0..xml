@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="principal_workflow1" timestamp="2017-05-01T18:29:31" time="0.055" tests="0" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="02c5d6ffe8fe131dfa8aee167459acbc"/>
+      <property name="suiteName" value="Principal Workflow1"/>
+      <property name="capabilities" value=""/>
+    </properties>
+  </testsuite>
+  <testsuite name="post_task_make_offer_assign_request_and_release_payment_write_reviews10" timestamp="2017-05-01T18:29:31" time="0.051" tests="32" failures="0" errors="1" skipped="31">
+    <properties>
+      <property name="specId" value="02c5d6ffe8fe131dfa8aee167459acbc"/>
+      <property name="suiteName" value="Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10"/>
+      <property name="capabilities" value=""/>
+    </properties>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster open Eyes for &quot;T0: Full Eyes&quot;4" time="1.128">
+      <error message="&#xA;(0 , _utils.getBrowserFor)(...).EyesOpen is not a function&#xA;"/>
+      <system-err>
+        <![CDATA[
+TypeError: (0 , _utils.getBrowserFor)(...).EyesOpen is not a function
+    at World.module.exports (/Users/kanak/repos/automation-web/test/support/action/openEyes.js:13:24)
+]]>
+      </system-err>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Worker goes to site &quot;/&quot;5" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster goes to site &quot;/&quot;6" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster logs &quot;in&quot; to &quot;Airtasker&quot;7" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Worker logs &quot;in&quot; to &quot;Airtasker&quot;8" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that the title is &quot;homePage.title&quot;11" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;homePage.postTaskLink&quot; becomes visible12" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster clicks on the button &quot;homePage.postTaskLink&quot;13" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that the currenturl is &quot;homePage.postLogin_postTask_URL&quot;14" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;homePage.postTaskTitle&quot; becomes visible17" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that inputfield &quot;homePage.postTaskTitle&quot; does not contain any text18" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster sets &quot;random.title&quot; to the inputfield &quot;homePage.postTaskTitle&quot;19" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster sets &quot;random.paragraph&quot; to the inputfield &quot;homePage.postTaskDescriptionInput&quot;20" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;homePage.taskDetailsButton&quot; becomes visible21" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster clicks on the button &quot;homePage.taskDetailsButton&quot; and expects element &quot;homePage.physicalOrOnline&quot; to be visible22" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;homePage.postTaskLocationInput&quot; becomes visible25" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster sets &quot;profilePage.location&quot; to the inputfield &quot;homePage.postTaskLocationInput&quot;26" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that inputfield &quot;homePage.postTaskLocationInput&quot; contains the text &quot;profilePage.location&quot;27" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster pauses for 1000ms28" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster presses &quot;keys.down&quot;29" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster presses &quot;keys.enter&quot;30" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that inputfield &quot;homePage.postTaskLocationInput&quot; contains the text &quot;profilePage.locationResult&quot;31" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster clicks on the button &quot;homePage.taskLocationButton&quot; and expects element &quot;homePage.paymentAmount&quot; to be visible32" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster captures a screenshot for the &quot;Budget&quot; page35" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster sets &quot;taskDetails.amount&quot; to the inputfield &quot;homePage.paymentAmount&quot;36" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster clicks on the button &quot;homePage.pricingButton&quot;37" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;homePage.taskPostedSuccessNoLoader&quot; has the class &quot;homePage.taskPostedSuccessNoLoaderClass&quot;38" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;homePage.postTaskForm&quot; becomes visible39" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster clicks on the button &quot;homePage.allDoneButton&quot;40" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster expects that element &quot;taskDetailsPage.dialog&quot; does not have the class &quot;taskDetailsPage.dialogDisplayedClass&quot;41" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="I capture task details of Poster42" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname=".Post Task, Make Offer, Assign, Request and Release Payment, Write Reviews10" name="Poster closes Eyes43" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

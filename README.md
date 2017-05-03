@@ -48,6 +48,12 @@ Sometimes its usefull to only execute a single feature file, to do so use the fo
 $ wdio --spec ./test/features/select.feature
 ```
 
+# Using parameters
+platform=browserstack
+feature=full-feature
+eyesViewport=1280x1100
+resolution=1600x1200
+
 
 # Using tags
 
@@ -129,3 +135,5 @@ todo
 cd ~/repos/airtasker-web
 gulp -l
 ~/repos/airtasker-web/build/airtasker/start.sh
+
+

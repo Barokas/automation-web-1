@@ -1,6 +1,6 @@
 const Sumologic = require('logs-to-sumologic');
  
-var collectorCode = 'blah'
+var collectorCode = 'Z'
  
 var endpoint = 'https://collectors.au.sumologic.com/receiver/v1/http/'
 
@@ -283,7 +283,7 @@ exports.config = {
 			// newrelic.error("Bazooka Error Local")
 			// newrelic.error(commandName + " -> " + args + " : " + error)
 			
-			// sumologic.log(commandName + " -> " + args + " : " + error, sumocb);
+			sumologic.log(commandName + " -> " + args + " : " + error, sumocb);
 			
 			
 			// var actor = global.actor
@@ -348,7 +348,7 @@ exports.config = {
 			            return;
 			        }
 					
-					// sumologic.log("Step Failure Summary (feature | scenario | step) = " + feature + " | " + scenario + " | " + step, sumocb);
+					sumologic.log("Step Failure Summary (feature | scenario | step) = " + feature + " | " + scenario + " | " + step, sumocb);
 					
 					// newrelic.error("Relic afterStep Errors")
 					// newrelic.error(feature.toString())
@@ -402,7 +402,7 @@ exports.config = {
 				var theFeature = feature.toString()
 				printSessionURL()
 
-				// sumologic.log("Executed Feature Summary (feature | scenario) = " + theFeature + " | " + scenario, sumocb);
+				sumologic.log("Executed Feature Summary (feature | scenario) = " + theFeature + " | " + scenario, sumocb);
 				
 				// logging.info("Executed Feature: " + feature)
 				
@@ -418,7 +418,7 @@ exports.config = {
 				//
 				// 	// console.log("Error in feature: " + theFeature)
 				// 	newrelic.error("Caught Error. Print Feature.")
-					// sumologic.log("Failed Feature Summary (feature | scenario) = " + theFeature + " | " + scenario, sumocb);
+					sumologic.log("Failed Feature Summary (feature | scenario) = " + theFeature + " | " + scenario, sumocb);
 				
 				// 	// newrelic.error(theFeature)
 				//
@@ -458,6 +458,8 @@ exports.config = {
 	// onComplete: function(exitCode) {
 	// }
 };
+
+global.contentAsset = []
 
 exports.airtaskerDomain = "airtasker"
 exports.httpProtocol = "https"

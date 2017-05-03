@@ -51,27 +51,17 @@ Scenario: A visitor signs up as a Worker on Airtasker
 		And   I expect that element "homePage.onboardingHeader" contains the text "homePage.addMobileNumberMessage"
 		Then  I expect that element "homePage.mobileNumberInput" becomes visible
 		And   I set "taskDetails.testMobileNumber" to the inputfield "homePage.mobileNumberInput"
-		Then  I expect that element "homePage.sendVerificationCodeButton" becomes visible
-		
+		Then  I expect that element "homePage.sendVerificationCodeButton" becomes visible		
 		Then  I expect that element "homePage.sendVerificationCodeButton" becomes visible
 		And   I click on the button "homePage.sendVerificationCodeButton"	
 		
-		Then  I expect that element "homePage.verificationCodeSentDialog" becomes visible
-		And   I expect that element "homePage.verificationCodeHeader" contains the text "homePage.verificationCodeSentSuccessMsgTitle"
-		And   I expect that element "homePage.verificationCodeBody" contains the text "homePage.verificationCodeBodyMessage"	
-		
-		Then  I expect that element "homePage.verificationAlertOKButton" becomes visible
-		And   I click on the button "homePage.verificationAlertOKButton"	
-		
-		Then  I expect that element "homePage.onboardingStepDialog" becomes visible
-		And   I expect that element "homePage.onboardingHeader" contains the text "homePage.addMobileNumberMessage"
 		Then  I expect that element "homePage.verificationCodeInput" becomes visible
 		And   I set "taskDetails.testVerificationCode" to the inputfield "homePage.verificationCodeInput"
-		Then  I expect that element "homePage.sendVerificationCodeButton" becomes visible
 		
-		Then  I expect that element "homePage.sendVerificationCodeButton" becomes visible
-		And   I click on the button "homePage.sendVerificationCodeButton"
+		Then  I expect that element "homePage.verifyMobileButton" becomes visible		
+		And   I click on the button "homePage.verifyMobileButton"
 		And   I pause for 3000ms
+				
 		And   I expect that element "homePage.verificationCodeDisplay" has the class "homePage.noLoaderClass"
 		
 		And   I expect that element "homePage.verificationCodeChangeButton" becomes visible
@@ -106,19 +96,16 @@ Scenario: A visitor signs up as a Worker on Airtasker
 		And   I click on the button "homePage.addBankAccountButton"	
 		And   I expect that element "homePage.onboardingHeader" eventually contains the text "homePage.checkOutAvailableWorkHeaderMessage"
 		Then  I expect that element "homePage.onboardingStepDialog" becomes visible
-		
 		And   I expect that element "homePage.onboardingNextButton" becomes visible
 		And   I click on the button "homePage.onboardingNextButton"
-		
 		Then  I expect that element "homePage.onboardingStepDialog" becomes visible
 		And   I expect that element "homePage.onboardingHeader" contains the text "homePage.chooseTaskHeaderMessage"
 		
 		And   I expect that element "homePage.onboardingNextButton" becomes visible
 		And   I click on the button "homePage.onboardingNextButton"
-		
 		Then  I expect that element "homePage.onboardingStepDialog" becomes visible
+
 		And   I expect that element "homePage.onboardingHeader" contains the text "homePage.completeTaskHeaderMessage"
-		
 		And   I expect that element "homePage.onboardingFinalButton" becomes visible
 		And   I click on the button "homePage.onboardingFinalButton"
 		

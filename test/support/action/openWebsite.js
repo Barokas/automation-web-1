@@ -20,6 +20,7 @@ module.exports = (person, type, page, done) => {
 		
 	var url = getCorrectURL(person, type, page);
 	
+	logging.info("URL returned: " + url)
 	// console.log("type: " + type);
 	// console.log("page: " + page);
 	// console.log("finalURL: " + url);
@@ -62,6 +63,9 @@ function getCorrectURL(person, type, page) {
 	
 	var url = '';
 	
+	logging.info("type: " + type)
+	logging.info("page: " + page)
+	
 	if ( type == 'rails' ) {
 			
 		if (page.indexOf("user") > -1) { // ASSUMES USER ID RETRIEVED FROM A GOOGLE SHEET
@@ -87,12 +91,14 @@ function getCorrectURL(person, type, page) {
 	if ((person === 'I') || (person === 'Both')){
 		
 		url = (type === 'url') ? page : browser.options.baseUrl + page;
+	logging.info("URL here: " + url)
 		
 	} else {
 		
 		url = (type === 'url') ? page : browser.select(person).options.baseUrl + page;
 	}
 	
+
 	return url;
 }
 

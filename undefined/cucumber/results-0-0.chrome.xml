@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="post_an_ikea_task_on_airtasker1" timestamp="2017-05-03T08:32:33" time="20.928" tests="0" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="480fe4e007c9b6d82cdb9a9c8e6aed7b"/>
+      <property name="suiteName" value="Post an IKEA Task on Airtasker1"/>
+      <property name="capabilities" value="chrome"/>
+    </properties>
+  </testsuite>
+  <testsuite name="a_guest_should_be_able_to_post_task8" timestamp="2017-05-03T08:32:33" time="20.922" tests="38" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="480fe4e007c9b6d82cdb9a9c8e6aed7b"/>
+      <property name="suiteName" value="A guest should be able to Post Task8"/>
+      <property name="capabilities" value="chrome"/>
+    </properties>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I open the site &quot;/&quot;4" time="21.331"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that the currenturl is &quot;homePage.root_URL&quot;10" time="19.66"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that the title is &quot;homePage.title&quot;11" time="16.687"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.postTaskLink&quot; is visible13" time="16.672"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.postTaskLink&quot;14" time="16.621"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.postTaskForm&quot; becomes visible15" time="16.162"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.postTaskFormTitle&quot; contains the text &quot;homePage.postTaskFormTitleValue&quot;16" time="14.713"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that the currenturl is &quot;homePage.preLogin_postTask_URL&quot;18" time="14.144"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.postTaskTitle&quot; is visible19" time="14.124"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that inputfield &quot;homePage.postTaskTitle&quot; does not contain any text22" time="14.069"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I set &quot;taskDetails.title&quot; to the inputfield &quot;homePage.postTaskTitle&quot;23" time="13.528"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I set &quot;taskDetails.description&quot; to the inputfield &quot;homePage.postTaskDescriptionInput&quot;24" time="13.164"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.taskDetailsButton&quot;25" time="12.796"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that the currenturl is &quot;homePage.postTask_signUpContext_URL&quot;26" time="12.654"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.toggleLogin&quot; becomes visible27" time="12.606"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the link &quot;homePage.loginLink&quot;30" time="12.515"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.emailInput&quot; becomes visible33" time="12.341"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I set &quot;taskDetails.poster_email&quot; to the inputfield &quot;homePage.emailInput&quot;34" time="12.244"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I set &quot;taskDetails.poster_password&quot; to the inputfield &quot;homePage.passwordInput&quot;35" time="12.015"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.loginButton&quot;36" time="11.813"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I pause for 3000ms37" time="11.724"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.errorMessage&quot; is not visible41" time="8.72"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that the currenturl is &quot;homePage.postTask_dashboard_URL&quot;42" time="8.681"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.postTaskTitle&quot; is visible44" time="8.655"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that inputfield &quot;homePage.postTaskTitle&quot; contains the text &quot;taskDetails.title&quot;45" time="8.607"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that inputfield &quot;homePage.postTaskDescriptionInput&quot; contains the text &quot;taskDetails.description&quot;46" time="8.07"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.taskDetailsButton&quot;47" time="7.538"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I pause for 1000ms48" time="7.47"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.physicalOrOnline&quot; becomes visible50" time="6.408"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the element &quot;homePage.physicalOrOnline&quot;51" time="6.39"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.taskLocationButton&quot;52" time="6.306"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I pause for 3000ms53" time="6.197"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I expect that element &quot;homePage.paymentAmount&quot; becomes visible55" time="3.191"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I set &quot;taskDetails.amount&quot; to the inputfield &quot;homePage.paymentAmount&quot;57" time="3.135"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.pricingButton&quot;58" time="3.016"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I pause for 2000ms59" time="2.83"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I click on the button &quot;homePage.allDoneButton&quot;61" time="0.821"/>
+    <testcase classname="chrome.A guest should be able to Post Task8" name="I pause for 200ms62" time="0.619"/>
+  </testsuite>
+</testsuites>

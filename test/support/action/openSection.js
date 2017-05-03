@@ -7,6 +7,7 @@
  */
 
 var homePage = require('../pageObjects/homePage.js');
+var frameworkSettings	= require('../settings/framework.js');
 
 import clickElement from './clickElement';
 import isVisible from '../check/isVisible';
@@ -35,16 +36,20 @@ function navigateToAirtasker(person, section) {
 			clickElement(person, "click", "button", "homePage.menu", false)
 			
 			// WaitFor & Click 'Settings'
+			getBrowserFor(person).pause(frameworkSettings.maxPause)
 			waitForVisible(person, "homePage.settingsMenu", false, false)
+			getBrowserFor(person).pause(frameworkSettings.maxPause)
 			clickElement(person, "click", "button", "homePage.settingsMenu", false)
 			
 			// WaitFor & Click 'Profile'
+			getBrowserFor(person).pause(frameworkSettings.maxPause)
 			waitForVisible(person, "homePage.profileMenu", false, false)
+			getBrowserFor(person).pause(frameworkSettings.maxPause)
 			clickElement(person, "click", "button", "homePage.profileMenu", false)
 			
-			getBrowserFor(person).pause(200)
+			getBrowserFor(person).pause(frameworkSettings.maxPause)
 			isVisible(person, "homePage.errorMessage", true, false)
-			getBrowserFor(person).pause(500)
+			getBrowserFor(person).pause(frameworkSettings.maxPause)
 			checkCurrentRelativeURL(person, false, "homePage.profile_URL", false)
 
         },

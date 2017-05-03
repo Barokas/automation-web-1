@@ -18,6 +18,12 @@ module.exports = (person, falseCase, page, done) => {
 	
 		expectedUrl = eval(page)
 		
+	} else if (page.indexOf('DO_NOT_EVAL') > -1) {
+		
+		page = page.split("DO_NOT_EVAL")[1]
+		expectedUrl = getExpectedURL(person, page)
+		
+		
 	} else {
 	
 		page = eval(page);

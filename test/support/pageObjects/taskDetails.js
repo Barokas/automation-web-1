@@ -1,7 +1,7 @@
 var taskDetails = {
 
-	title: 'Automated Test Feature',
-	description: 'Lets spin up and test drive on full throttle',
+	title: 'Move furniture into my Penthouse',
+	description: 'Standard Airtasker Stuff but with more style',
 	amount: '5',
 	currency: '$',
 	poster_email: 'user@user.com',
@@ -15,7 +15,10 @@ var taskDetails = {
 	country: 'Australia',
 	birthdayDate: '11',
 	birthdayMonth: '11',
-	birthdayYear: '1983'
+	birthdayYear: '1983',
+
+	ikeaSuburb: 'Tempe',
+	ikeaSuburbResult: 'Tempe, New South Wales, Australia'
 	
 };
 
