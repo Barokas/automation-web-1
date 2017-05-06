@@ -209,7 +209,7 @@ module.exports = function then() {
     );
 	
     this.Then(
-        /^([^"]*)? capture(?:s)? a screenshot for the "([^"]*)?" page$/,
+        /^([^"]*)? capture(?:s)? a screenshot for the "([^"]*)?" ([^"]*)?$/,
         captureEyes
     );
 	 

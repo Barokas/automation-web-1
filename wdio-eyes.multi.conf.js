@@ -240,6 +240,12 @@ exports.config = {
             return Poster_eyes.checkWindow(tag);
         });
 
+        Poster_browser.addCommand("EyesCheckRegion", function async(tag) {
+            var webdriver = require('selenium-webdriver');
+            console.log("** Poster Visually Checking Region: " + tag + " **");
+            return Poster_eyes.checkRegionByElement(Poster_driver.findElement(webdriver.By.id(tag)), 'posterRegion');
+        });
+
         Poster_browser.addCommand("EyesClose", function async(throwEx) {
             console.log("** Poster Closing eyes **")
             return CloseEyes(Poster_eyes);
@@ -260,6 +266,12 @@ exports.config = {
         Worker_browser.addCommand("EyesCheckWindow", function async(tag) {
             console.log("** Worker Visually Checking Page: " + tag + " **");
             return Worker_eyes.checkWindow(tag);
+        });
+
+        Worker_browser.addCommand("EyesCheckRegion", function async(tag) {
+            var webdriver = require('selenium-webdriver');
+            console.log("** Worker Visually Checking Region: " + tag + " **");
+            return Worker_eyes.checkRegionByElement(Worker_driver.findElement(webdriver.By.id(tag)), 'workerRegion');
         });
 
         Worker_browser.addCommand("EyesClose", function async(throwEx) {

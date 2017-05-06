@@ -1,5 +1,7 @@
 var homePage = {
-
+	
+	postTaskButton: '#menu-cta > a.post-task-link.plain-text',
+	
 	root_URL: '/',
 	dashboard_URL: '/account/dashboard/',
 	payments_URL: '/account/payments/',
