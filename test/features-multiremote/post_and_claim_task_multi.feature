@@ -6,3 +6,4 @@ Scenario: Capture a CSS region using eyesCheckRegion
 	
 	# Then Poster debugs
 	And   Poster captures a screenshot for the "homePage.postTaskButton" region
+	Then Poster closes Eyes
